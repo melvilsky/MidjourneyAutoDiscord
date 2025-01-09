@@ -2,6 +2,7 @@
 
 MESSAGE_REPEAT_COUNT = 3 # Количество повторений сообщения
 HEADLESS_MODE = True  # True для фонового режима, False для обычного
+TARGET_CHANNEL_URL = "https://discord.com/channels/your_channel_id" #адресс канала 
 
 # Настройки Midjourney promt
 ar_value = '16:9'
