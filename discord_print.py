@@ -31,7 +31,9 @@ def run_discord_bot():
         if formatted_message:
             for _ in range(MESSAGE_REPEAT_COUNT):
                 # Ввод сообщения в поле
+
                 page.fill(message_box_selector, formatted_message)
+                page.wait_for_timeout(500)
                 page.press(message_box_selector, "Enter")
                 print(f"Отправлено сообщение: {formatted_message}")
 
@@ -47,50 +49,6 @@ def run_discord_bot():
         browser.close()
 
 
-def get_max_allowed_number(message_repeat_count):
-    """
-    Возвращает максимальное число (от 1 до 10), которое можно вводить
-    заданное количество раз message_repeat_count.
-
-    :param message_repeat_count: Количество ввода строки
-    :return: Максимальное допустимое число
-    """
-
-    # Определяем правила максимального количества повторений для каждого числа
-    def repeats_for_number(number):
-        if number == 1:
-            return 10
-        elif number == 2:
-            return 5
-        elif number == 3:
-            return 3
-        elif number in [4, 5]:
-            return 2
-        else:  # Для чисел 6–10
-            return 1
-
-    # Ищем максимальное число, которое удовлетворяет условию
-    for number in range(10, 0, -1):  # Проверяем числа от 10 до 1
-        if message_repeat_count <= repeats_for_number(number):
-            return number
-
-    return None  # Если ничего не найдено (на случай некорректного ввода)
-
-def start_discord_bot(message_repeat_count):
-    """
-    Выполняет вызов run_discord_bot заданное количество раз
-    с рандомной задержкой между вызовами.
-
-    :param message_repeat_count: Количество повторений.
-    """
-    allowed_number = get_max_allowed_number(message_repeat_count)
-    for i in range(allowed_number):
-        run_discord_bot()
-        # Генерация случайной задержки
-        delay = random.randint(10, 16)   # Приведение к секундам
-        print(f"Задержка перед следующим запуском: {delay} секунд")
-        sleep(delay)
-
 if __name__ == "__main__":
     while True:
         # Проверяем, есть ли строки в файле
@@ -103,4 +61,7 @@ if __name__ == "__main__":
             break
 
         # Если файл не пуст, запускаем бот
-        start_discord_bot(MESSAGE_REPEAT_COUNT)
+        run_discord_bot()
+        delay = random.randint(40, 70)  # Приведение к секундам
+        print(f"Задержка перед следующим запуском: {delay} секунд")
+        sleep(delay)
