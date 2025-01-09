@@ -1,0 +1,2 @@
+# MidjourneyAutoDiscord
+MidjourneyAutoDiscord
