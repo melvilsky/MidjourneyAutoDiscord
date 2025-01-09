@@ -1,2 +1,2 @@
-DISCORD_EMAIL = "m.peklov@gmail.com"  # Замените на ваш email
-DISCORD_PASSWORD = "123Vfrcbv!"  # Замените на ваш пароль
+DISCORD_EMAIL = "login@gmail.com"  # Замените на ваш email
+DISCORD_PASSWORD = "password"  # Замените на ваш пароль
