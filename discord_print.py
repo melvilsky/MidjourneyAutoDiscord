@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from config import MESSAGE_REPEAT_COUNT, HEADLESS_MODE
+from config import MESSAGE_REPEAT_COUNT, HEADLESS_MODE, TARGET_CHANNEL_URL
 from PromtGeneration import process_and_format_line, remove_first_line
 from time import sleep
 import os
@@ -7,7 +7,7 @@ import random
 
 def run_discord_bot():
     session_file = "session.json"
-    target_channel_url = "https://discord.com/channels/1303467036176809995/1326909088172347474"
+    target_channel_url = TARGET_CHANNEL_URL
 
     with sync_playwright() as p:
         # Запуск браузера
