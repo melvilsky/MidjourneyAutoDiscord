@@ -62,6 +62,6 @@ if __name__ == "__main__":
 
         # Если файл не пуст, запускаем бот
         run_discord_bot()
-        delay = random.randint(40, 70)  # Приведение к секундам
+        delay = random.randint(40, 70)  # Время задержки 
         print(f"Задержка перед следующим запуском: {delay} секунд")
         sleep(delay)
