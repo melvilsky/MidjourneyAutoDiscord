@@ -1,13 +1,12 @@
-from config import ar_value, style_value, c_value, s_value, v_value, quality_value, weird_value
+from load_config import TXT_PATH, ar_value, style_value, c_value, s_value, v_value, quality_value, weird_value
 
-txt_path = "mj_gen.txt"  # Пример: замените на ваш путь
 
 def process_and_format_line():
     """
     Читает первую строку из файла, форматирует её и возвращает отформатированную строку.
     Строка не удаляется сразу.
     """
-    path = txt_path  # Локальная переменная для пути к файлу
+    path = TXT_PATH  # Локальная переменная для пути к файлу
 
     # Читаем содержимое файла
     with open(path, 'r', encoding='utf-8') as file:
@@ -30,7 +29,7 @@ def remove_first_line():
     """
     Удаляет первую строку из файла после использования.
     """
-    path = txt_path  # Локальная переменная для пути к файлу
+    path = TXT_PATH  # Локальная переменная для пути к файлу
 
     # Читаем содержимое файла
     with open(path, 'r', encoding='utf-8') as file:

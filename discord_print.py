@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from config import MESSAGE_REPEAT_COUNT, HEADLESS_MODE, TARGET_CHANNEL_URL
+from load_config import MESSAGE_REPEAT_COUNT, HEADLESS_MODE, TARGET_CHANNEL_URL, WAITING_TIME
 from PromtGeneration import process_and_format_line, remove_first_line
 from time import sleep
 import os
@@ -61,7 +61,11 @@ if __name__ == "__main__":
             break
 
         # Если файл не пуст, запускаем бот
-        run_discord_bot()
-        delay = random.randint(40, 70)  # Время задержки 
+        try:
+            run_discord_bot()
+        except Exception as e:
+            print(f"Произошла ошибка: {e}")
+
+        delay = random.randint(*WAITING_TIME)  # Время задержки
         print(f"Задержка перед следующим запуском: {delay} секунд")
         sleep(delay)
