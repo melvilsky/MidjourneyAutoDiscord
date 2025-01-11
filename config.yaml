@@ -12,7 +12,7 @@ general:
   WAITING_TIME: [30, 50]
 
   # URL целевого канала в Discord
-  TARGET_CHANNEL_URL: "https://discord.com/channels/1303467036176809995/1326970304513441812"
+  TARGET_CHANNEL_URL: "https://discord.com/channels/id
 
 midjourney:
   # Соотношение сторон изображения (ширина:высота), например: '1:1', '4:3', '16:9'
