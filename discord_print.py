@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from load_config import MESSAGE_REPEAT_COUNT, HEADLESS_MODE, TARGET_CHANNEL_URL, WAITING_TIME
+from load_config import TXT_PATH, MESSAGE_REPEAT_COUNT, HEADLESS_MODE, TARGET_CHANNEL_URL, WAITING_TIME
 from PromtGeneration import process_and_format_line, remove_first_line
 from time import sleep
 import os
@@ -52,7 +52,7 @@ def run_discord_bot():
 if __name__ == "__main__":
     while True:
         # Проверяем, есть ли строки в файле
-        with open("mj_gen.txt", 'r', encoding='utf-8') as file:
+        with open(TXT_PATH, 'r', encoding='utf-8') as file:
             lines = file.readlines()
 
         # Если файл пуст, прерываем цикл
