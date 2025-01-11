@@ -5,8 +5,9 @@ HEADLESS_MODE = True  # True для фонового режима, False для 
 TARGET_CHANNEL_URL = "https://discord.com/channels/1303467036176809995/1326970304513441812" #адресс канала
 
 # Настройки Midjourney promt
-ar_value = '9:16'
+ar_value = '16:9'
 style_value = 'raw'
+quality_value = 2
 c_value = 25
 s_value = 300
 v_value = '6.1'
