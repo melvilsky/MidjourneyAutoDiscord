@@ -29,5 +29,5 @@ midjourney:
   s_value: 300
   # Версия алгоритма MidJourney
   v_value: "6.1"
-  #Другие настройки запроса
+  #Негативный промт
   negative_value: "text, watermark, logos"
