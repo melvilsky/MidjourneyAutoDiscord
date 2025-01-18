@@ -38,7 +38,7 @@ def run_discord_bot():
                 print(f"Отправлено сообщение: {formatted_message}")
 
                 # Генерация случайной задержки
-                delay = random.randint(3000, 7000)
+                delay = random.randint(3000, 5000)
                 page.wait_for_timeout(delay)
 
             # Удаляем строку только после завершения всех повторений

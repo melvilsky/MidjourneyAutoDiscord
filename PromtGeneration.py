@@ -1,4 +1,4 @@
-from load_config import TXT_PATH, ar_value, style_value, c_value, s_value, v_value, quality_value, weird_value
+from load_config import TXT_PATH, ar_value, style_value, c_value, s_value, v_value, quality_value, weird_value, negative_value
 
 
 def process_and_format_line():
@@ -19,7 +19,7 @@ def process_and_format_line():
 
     # Получаем и форматируем первую строку
     description = lines[0].strip()
-    formatted_message = f"/imagine prompt:{description} --ar {ar_value} --style {style_value} --c {c_value} --s {s_value} --q {quality_value} --weird {weird_value} --v {v_value}"
+    formatted_message = f"/imagine prompt:{description} --ar {ar_value} --style {style_value} --c {c_value} --s {s_value} --q {quality_value} --weird {weird_value} --v {v_value} --no {negative_value}"
 
     # Возвращаем отформатированную строку (не удаляем строку сразу)
     return formatted_message
