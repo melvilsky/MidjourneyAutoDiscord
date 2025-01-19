@@ -6,14 +6,16 @@ general:
   TXT_PATH: "mj_gen.txt"
 
   # Режим запуска браузера: True для фонового режима, False для обычного
-  HEADLESS_MODE: true
+  HEADLESS_MODE: True
 
   #Время ожидание между запросами, время выберается рандомно по этому надо указать диапазон в секундах
   WAITING_TIME: [40, 50]
 
-  # URL целевого канала в Discord
-  TARGET_CHANNEL_URL: "https://discord.com/channels/id_chenel/id_group"
+  # Здесь нужно указать ID сервера и ID канала вашего Discord сервера (замените текущее)
+  DISCORD_SERVER_ID: 1303467036176809995
+  DISCORD_CHANNEL_ID: 1326970304513441812
 
+#-------------------------------------------------------
 midjourney:
   # Соотношение сторон изображения (ширина:высота), например: '1:1', '4:3', '16:9'
   ar_value: "16:9"
@@ -31,3 +33,5 @@ midjourney:
   v_value: "6.1"
   #Негативный промт
   negative_value: "text, watermark, logos"
+  #Дополнительнительная настройка промта которого нет в настройках и ее нужно указать полностью
+  add_value: ""

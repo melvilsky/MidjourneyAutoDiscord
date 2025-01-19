@@ -1,4 +1,4 @@
-from load_config import TXT_PATH, ar_value, style_value, c_value, s_value, v_value, quality_value, weird_value, negative_value
+from load_config import *
 
 
 def process_and_format_line():
@@ -17,9 +17,21 @@ def process_and_format_line():
         print("Файл пуст.")
         return None
 
+
     # Получаем и форматируем первую строку
     description = lines[0].strip()
-    formatted_message = f"/imagine prompt:{description} --ar {ar_value} --style {style_value} --c {c_value} --s {s_value} --q {quality_value} --weird {weird_value} --v {v_value} --no {negative_value}"
+    formatted_message = (
+        f"/imagine prompt:{description} "
+        f"--ar {ar_value} "
+        f"--style {style_value} "
+        f"--c {c_value} "
+        f"--s {s_value} "
+        f"--q {quality_value} "
+        f"--weird {weird_value} "
+        f"--v {v_value} "
+        f"--no {negative_value} "
+        f"{add_value}"
+    )
 
     # Возвращаем отформатированную строку (не удаляем строку сразу)
     return formatted_message
@@ -39,3 +51,6 @@ def remove_first_line():
     if lines:
         with open(path, 'w', encoding='utf-8') as file:
             file.writelines(lines[1:])
+
+if __name__ == "__main__":
+    print(process_and_format_line())
