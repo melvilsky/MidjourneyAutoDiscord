@@ -14,7 +14,6 @@ def process_and_format_line():
 
     # Проверяем, есть ли строки в файле
     if not lines:
-        print("Файл пуст.")
         return None
 
 
