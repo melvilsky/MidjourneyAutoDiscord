@@ -1,11 +1,28 @@
 import subprocess
 import threading
-from flask import Flask, render_template_string, redirect, url_for
+import yaml
+from flask import (
+    Flask,
+    render_template_string,
+    redirect,
+    url_for,
+    request,
+)
+from load_config import load_config, TXT_PATH
 
 app = Flask(__name__)
 
 process = None
 log_lines = []
+
+# Shared navigation bar for all pages
+NAVIGATION = """
+    <nav>
+        <a href='{{ url_for('index') }}'>Home</a> |
+        <a href='{{ url_for('show_config') }}'>Config</a> |
+        <a href='{{ url_for('edit_prompts') }}'>Prompts</a>
+    </nav>
+"""
 
 
 def read_output(proc):
@@ -22,10 +39,11 @@ def index():
     <head><title>Midjourney Auto Discord</title></head>
     <body>
         <h1>Midjourney Auto Discord</h1>
-        <form action='/start' method='post'>
+        """ + NAVIGATION + """
+        <form action='{{ url_for('start') }}' method='post'>
             <button type='submit' {{ 'disabled' if running else '' }}>Start</button>
         </form>
-        <form action='/pause' method='post'>
+        <form action='{{ url_for('pause') }}' method='post'>
             <button type='submit' {{ '' if running else 'disabled' }}>Pause</button>
         </form>
         <pre>{{ logs }}</pre>
@@ -57,6 +75,49 @@ def pause():
         process.terminate()
         process.wait()
     return redirect(url_for('index'))
+
+
+@app.route('/config')
+def show_config():
+    config = load_config()
+    html = """
+    <html>
+    <head><title>Config</title></head>
+    <body>
+        <h1>Current Configuration</h1>
+        """ + NAVIGATION + """
+        <pre>{{ config_text }}</pre>
+    </body>
+    </html>
+    """
+    return render_template_string(html, config_text=yaml.dump(config, allow_unicode=True))
+
+
+@app.route('/prompts', methods=['GET', 'POST'])
+def edit_prompts():
+    message = ""
+    if request.method == 'POST':
+        new_text = request.form.get('prompts', '')
+        with open(TXT_PATH, 'w', encoding='utf-8') as f:
+            f.write(new_text)
+        message = "Saved!"
+    with open(TXT_PATH, 'r', encoding='utf-8') as f:
+        content = f.read()
+    html = """
+    <html>
+    <head><title>Edit Prompts</title></head>
+    <body>
+        <h1>Edit Prompts</h1>
+        """ + NAVIGATION + """
+        <form method='post'>
+            <textarea name='prompts' rows='20' cols='80'>{{ content }}</textarea><br>
+            <button type='submit'>Save</button>
+        </form>
+        <p>{{ message }}</p>
+    </body>
+    </html>
+    """
+    return render_template_string(html, content=content, message=message)
 
 
 if __name__ == '__main__':
