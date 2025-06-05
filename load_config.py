@@ -34,4 +34,4 @@ add_value = midjourney["add_value"]
 
 
 if __name__ == "__main__":
-    print(TARGET_CHANNEL_URL,)
+    print(TARGET_CHANNEL_URL)
